@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8" />
-  <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
-</head>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="//js.jotform.com/JotFormCustomWidget.min.js"></script>
+  </head>
 
-<body>
-  <div id="mywidget">
-    <input type="text" id="myTextInput" />
-  </div>
+  <body>
+    <div id="mywidget">
+      <input type="text" id="myTextInput" />
+    </div>
 
-  <script type="text/javascript">
-    JFCustomWidget.subscribe('ready', () => {
-      var charLimit = parseInt(JFCustomWidget.getWidgetSetting('charLimit'));
-      var myTextInput = document.getElementById('myTextInput');
-      myTextInput ? (myTextInput.maxLength = charLimit) : '';
+    <script type="text/javascript">
+      JFCustomWidget.subscribe('ready', () => {
+        var charLimit = parseInt(JFCustomWidget.getWidgetSetting('charLimit'));
+        var myTextInput = document.getElementById('myTextInput');
+        myTextInput ? (myTextInput.maxLength = charLimit) : '';
 
-      console.log(myTextInput);
+        console.log(myTextInput);
 
-      console.log(myTextInput.value);
+        console.log(myTextInput.value);
 
-      JFCustomWidget.subscribe('submit', () => {
-        var data = {
-          valid: true,
-          value: myTextInput.value,
-        };
+        JFCustomWidget.subscribe('submit', () => {
+          var data = {
+            valid: true,
+            value: myTextInput.value,
+          };
 
-        console.log(data);
+          console.log(data);
 
-        JFCustomWidget.sendSubmit(data);
+          JFCustomWidget.sendSubmit(data);
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
+</html>
