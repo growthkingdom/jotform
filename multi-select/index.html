@@ -12,13 +12,15 @@
 
     <script type="text/javascript">
       JFCustomWidget.subscribe('ready', () => {
-        var charLimit = parseInt(JFCustomWidget.getWidgetSetting('charLimit'));
+        const settings = JFCustomWidget.getWidgetSettings();
+
         var myTextInput = document.getElementById('myTextInput');
-        myTextInput ? (myTextInput.maxLength = charLimit) : '';
 
-        console.log(myTextInput);
+        const medicines = JFCustomWidget.getWidgetSetting('medicines');
 
-        console.log(myTextInput.value);
+        initFields({ medicines });
+
+        ////////////////////////////////////////////////
 
         JFCustomWidget.subscribe('submit', () => {
           var data = {
@@ -27,6 +29,8 @@
           };
 
           console.log(data);
+
+          ////////////////////////////////////////////////
 
           JFCustomWidget.sendSubmit(data);
         });
