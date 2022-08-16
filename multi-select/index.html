@@ -15,13 +15,17 @@
       var myTextInput = document.getElementById('myTextInput');
       myTextInput ? (myTextInput.maxLength = charLimit) : '';
 
-      console.log(charLimit, myTextInput);
+      console.log(myTextInput);
+
+      console.log(myTextInput.value);
 
       JFCustomWidget.subscribe('submit', () => {
         var data = {
           valid: true,
           value: myTextInput.value,
         };
+
+        console.log(data);
 
         JFCustomWidget.sendSubmit(data);
       });
