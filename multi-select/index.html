@@ -18,19 +18,15 @@
 
         const medicines = JFCustomWidget.getWidgetSetting('medicines');
 
+        console.log(medicines, settings);
+
         ////////////////////////////////////////////////
 
         JFCustomWidget.subscribe('submit', () => {
-          var data = {
+          JFCustomWidget.sendSubmit({
             valid: true,
             value: myTextInput.value,
-          };
-
-          console.log(data);
-
-          ////////////////////////////////////////////////
-
-          JFCustomWidget.sendSubmit(data);
+          });
         });
       });
     </script>
